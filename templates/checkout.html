@@ -1,0 +1,418 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout - Smart Cart{% endblock %}
+
+{% block head %}
+<style>
+    .checkout-wrapper {
+        display: grid;
+        grid-template-columns: 1.8fr 1fr;
+        gap: 30px;
+        margin-top: 10px;
+    }
+
+    .checkout-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .checkout-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        padding: 30px;
+        border: 1px solid #f1f5f9;
+        transition: var(--transition);
+        position: relative;
+    }
+
+    .checkout-card.active {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border-color: var(--primary-color);
+    }
+
+    .step-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .step-number {
+        width: 32px;
+        height: 32px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .step-header h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin: 0;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .full-width { grid-column: span 2; }
+
+    .input-field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .input-field label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-light);
+    }
+
+    .premium-input {
+        padding: 14px 18px;
+        border: 2px solid #f1f5f9;
+        border-radius: 12px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        background: #f8fafc;
+    }
+
+    .premium-input:focus {
+        border-color: var(--primary-color);
+        background: white;
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.1);
+    }
+
+    /* Payment Styles */
+    .payment-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .payment-card {
+        border: 2px solid #f1f5f9;
+        border-radius: 14px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        background: #f8fafc;
+        position: relative;
+    }
+
+    .payment-card:hover {
+        border-color: #cbd5e1;
+    }
+
+    .payment-card.selected {
+        border-color: var(--primary-color);
+        background: #f0fdf4;
+    }
+
+    .payment-card input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .payment-card i {
+        font-size: 24px;
+        color: var(--text-light);
+    }
+
+    .payment-card.selected i {
+        color: var(--primary-color);
+    }
+
+    .payment-card h4 {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .payment-card p {
+        font-size: 13px;
+        color: var(--text-light);
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Summary Panel */
+    .summary-panel {
+        background: white;
+        border-radius: 16px;
+        padding: 25px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        border: 1px solid #f1f5f9;
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+    }
+
+    .summary-header {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .cart-items-preview {
+        max-height: 200px;
+        overflow-y: auto;
+        margin-bottom: 20px;
+    }
+
+    .preview-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        font-size: 14px;
+    }
+
+    .preview-item .qty {
+        color: var(--text-light);
+        background: #f1f5f9;
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 12px;
+    }
+
+    .bill-details {
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .bill-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 15px;
+    }
+
+    .bill-row.total {
+        margin-top: 10px;
+        padding-top: 15px;
+        border-top: 1px dashed #cbd5e1;
+        font-weight: 800;
+        font-size: 20px;
+        color: var(--text-dark);
+    }
+
+    .btn-place-order {
+        width: 100%;
+        padding: 18px;
+        border-radius: 14px;
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 25px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(5, 150, 105, 0.2);
+    }
+
+    .btn-place-order:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px rgba(5, 150, 105, 0.3);
+        background: var(--primary-hover);
+    }
+
+    @media (max-width: 991px) {
+        .checkout-wrapper { grid-template-columns: 1fr; }
+        .summary-panel { position: static; margin-top: 20px; }
+    }
+
+    @media (max-width: 600px) {
+        .form-grid, .payment-grid { grid-template-columns: 1fr; }
+        .full-width { grid-column: auto; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="checkout-wrapper">
+    <div class="checkout-steps">
+        <form action="{{ url_for('checkout') }}" method="POST" id="checkout-form">
+            <!-- Step 1: Delivery Address -->
+            <div class="checkout-card active">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h3>Delivery Address</h3>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="input-field full-width">
+                        <label for="address">Full Address</label>
+                        <input type="text" id="address" name="address" class="premium-input" required placeholder="House No. / Street / Area">
+                    </div>
+                    <div class="input-field">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" class="premium-input" required placeholder="e.g. Hyderabad">
+                    </div>
+                    <div class="input-field">
+                        <label for="zip_code">Pincode</label>
+                        <input type="text" id="zip_code" name="zip_code" class="premium-input" required placeholder="e.g. 500001">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Payment Method -->
+            <div class="checkout-card" style="margin-top: 30px;">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h3>Payment Method</h3>
+                </div>
+
+                <div class="payment-grid">
+                    <div class="payment-card selected" onclick="togglePayment(this, 'cod')">
+                        <input type="radio" id="cod" name="payment_method" value="Cash on Delivery" checked>
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                        <h4>Cash on Delivery</h4>
+                        <p>Pay at your doorstep with cash or any UPI app.</p>
+                        <div style="position: absolute; top: 15px; right: 15px; color: var(--primary-color);">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                    </div>
+
+                    <div class="payment-card" onclick="togglePayment(this, 'postpaid')">
+                        <input type="radio" id="postpaid" name="payment_method" value="Postpaid">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <h4>Postpaid</h4>
+                        <p>Order now and pay later. Best for regular users.</p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Summary Panel -->
+    <div class="summary-panel">
+        <div class="summary-header">Order Summary</div>
+        
+        <div class="cart-items-preview">
+            {% for p_id, item in session['cart'].items() %}
+                <div class="preview-item">
+                    <span>Product #{{ p_id[-6:] }}</span>
+                    <span class="qty">x{{ item.qty }}</span>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="bill-details">
+            <div class="bill-row">
+                <span>Items Total</span>
+                <span>₹{{ "%.2f"|format(total) }}</span>
+            </div>
+            <div class="bill-row">
+                <span>Delivery Charge</span>
+                {% if total > 500 %}
+                    <span style="color: #059669; font-weight: 700;">FREE</span>
+                {% else %}
+                    <span>₹50.00</span>
+                {% endif %}
+            </div>
+            <div class="bill-row total">
+                <span>To Pay</span>
+                <span>₹{{ "%.2f"|format(total if total > 500 else total + 50) }}</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; align-items: center; gap: 12px; color: #0369a1; background: #e0f2fe; padding: 15px; border-radius: 12px;">
+            <i class="fa-solid fa-bolt" style="font-size: 20px;"></i>
+            <div>
+                <div style="font-size: 13px; font-weight: 700;">Super Fast Delivery</div>
+                <div style="font-size: 12px;" id="eta-text">Arriving in 2-3 days</div>
+            </div>
+        </div>
+
+        <button type="button" onclick="handlePayment()" class="btn-place-order" id="pay-btn">
+            Proceed to Pay <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <div id="payment-processing" style="display: none; text-align: center; margin-top: 20px; padding: 20px; background: #f0fdf4; border-radius: 12px; border: 1px solid #bbf7d0;">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size: 24px; color: var(--primary-color); margin-bottom: 10px;"></i>
+            <div style="font-weight: 700; color: #166534;">Processing Payment...</div>
+            <div style="font-size: 13px; color: #166534;">Please do not refresh the page</div>
+        </div>
+
+        <div style="text-align: center; margin-top: 15px; color: var(--text-light); font-size: 12px;">
+            Safe and Secure Payments. Easy returns.
+        </div>
+    </div>
+</div>
+
+<script>
+    function handlePayment() {
+        const payBtn = document.getElementById('pay-btn');
+        const processing = document.getElementById('payment-processing');
+        const form = document.getElementById('checkout-form');
+        
+        // Basic validation
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        payBtn.style.display = 'none';
+        processing.style.display = 'block';
+
+        // Mock payment processing for 3 seconds
+        setTimeout(() => {
+            form.submit();
+        }, 3000);
+    }
+
+    function togglePayment(el, id) {
+        document.querySelectorAll('.payment-card').forEach(c => {
+            c.classList.remove('selected');
+            const check = c.querySelector('.fa-circle-check');
+            if (check) check.remove();
+        });
+        
+        el.classList.add('selected');
+        document.getElementById(id).checked = true;
+        
+        const checkIcon = document.createElement('div');
+        checkIcon.style.position = 'absolute';
+        checkIcon.style.top = '15px';
+        checkIcon.style.right = '15px';
+        checkIcon.style.color = 'var(--primary-color)';
+        checkIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+        el.appendChild(checkIcon);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const etaText = document.getElementById("eta-text");
+        const deliveryDate = new Date();
+        deliveryDate.setDate(deliveryDate.getDate() + 2);
+        const options = { month: 'short', day: 'numeric' };
+        etaText.innerText = "Arriving by " + deliveryDate.toLocaleDateString('en-US', options);
+    });
+</script>
+{% endblock %}

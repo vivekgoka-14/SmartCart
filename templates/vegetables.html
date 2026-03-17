@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}Fresh Vegetables - Smart Cart{% endblock %}
+
+{% block head %}
+<style>
+    .category-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #fefce8 0%, #fef08a 100%);
+        border-radius: var(--border-radius);
+    }
+    .category-header h1 {
+        color: #ca8a04; /* Darker yellow/orange for contrast */
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+    .category-header p {
+        color: #854d0e;
+        font-size: 18px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="category-header">
+    <h1>Fresh Vegetables</h1>
+    <p>Explore our wide variety of crisp, nutritious, and locally sourced vegetables.</p>
+</div>
+
+<div class="products-grid">
+    {% if products %}
+        {% for product in products %}
+        <div class="product-card">
+            <img src="{{ product.image_url or 'https://via.placeholder.com/300x200?text=' ~ product.name|urlencode }}" alt="{{ product.name }}" class="product-img">
+            <div class="product-info">
+                <span class="product-category">{{ product.category }}</span>
+                <a href="{{ url_for('product_detail', product_id=product._id|string) }}" class="product-name">{{ product.name }}</a>
+                
+                <div class="product-price-row">
+                    <div>
+                        <span class="price">₹{{ "%.2f"|format(product.price) }}</span>
+                        {% if product.compare_price %}
+                        <span class="compare-price">₹{{ "%.2f"|format(product.compare_price) }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 8px; margin-top: auto;">
+                    <!-- Form to add to wishlist -->
+                    {% if 'user_id' in session %}
+                    <form action="{{ url_for('toggle_wishlist', product_id=product._id|string) }}" method="POST">
+                        <button type="submit" class="btn btn-outline" style="width: 100%; padding: 8px; border-color: #e2e8f0; color: #94a3b8;" title="Add to Wishlist">
+                            <i class="fa-regular fa-heart"></i> Add to Wishlist
+                        </button>
+                    </form>
+                    {% endif %}
+                    
+                    <!-- Form to add to cart & buy now-->
+                    <form action="{{ url_for('add_to_cart', product_id=product._id|string) }}" method="POST" style="display: flex; gap: 8px; flex-direction: column;">
+                        {% if True %}
+                        <input type="hidden" name="qty" value="1">
+                        <div style="display: flex; gap: 8px;">
+                            <button type="submit" class="btn btn-primary" style="flex: 1; padding: 10px 5px; font-size: 13px; background-color: #f59e0b; border-color: #f59e0b; color: white;">
+                                Add to Cart
+                            </button>
+                            <button type="submit" name="buy_now" value="true" class="btn btn-primary" style="flex: 1; padding: 10px 5px; font-size: 13px; background-color: #ea580c; border-color: #ea580c; color: white;">
+                                Buy Now
+                            </button>
+                        </div>
+                        {% else %}
+                        <button type="button" class="btn btn-danger" disabled style="width: 100%; padding: 10px; font-size: 13px; opacity: 0.7;">
+                            Out of Stock
+                        </button>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: white; border-radius: var(--border-radius); box-shadow: var(--card-shadow);">
+            <i class="fa-solid fa-leaf" style="font-size: 48px; color: var(--text-light); margin-bottom: 20px;"></i>
+            <h3 style="color: var(--text-dark); margin-bottom: 10px;">No vegetables available</h3>
+            <p style="color: var(--text-light); margin-bottom: 20px;">We are currently restocking our fresh vegetables. Check back soon!</p>
+            <a href="{{ url_for('products') }}" class="btn btn-outline">Browse All Products</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Verify Email - Smart Cart{% endblock %}
+
+{% block content %}
+<div class="form-container" style="margin-top: 50px; margin-bottom: 50px;">
+    <h2 style="text-align: center; margin-bottom: 30px; color: var(--primary-color);">Verify Your Email</h2>
+    <p style="text-align: center; color: var(--text-light); margin-bottom: 20px;">We've sent a 6-digit OTP to your email address. Please enter it below to complete your registration.</p>
+    
+    <form action="{{ url_for('verify_signup_otp') }}" method="POST">
+        <div class="form-group">
+            <label for="otp">Enter OTP</label>
+            <input type="text" id="otp" name="otp" class="form-control" required placeholder="e.g. 123456" pattern="\d{6}" maxlength="6" style="text-align: center; letter-spacing: 5px; font-size: 20px;">
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 16px; padding: 12px;">Verify Account</button>
+    </form>
+    
+    <div style="text-align: center; margin-top: 25px;">
+        <p style="color: var(--text-light);">Didn't receive the email? <a href="{{ url_for('register') }}" style="color: var(--primary-color); font-weight: 500;">Register Again</a></p>
+    </div>
+</div>
+{% endblock %}

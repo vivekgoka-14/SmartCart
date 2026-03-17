@@ -1,0 +1,968 @@
+[
+  {
+    "_id": "69b38024f87e896936c375be",
+    "name": "Mango",
+    "category": "Fresh Fruits",
+    "description": "Fresh organic Alphonso mangoes, known for their sweetness and rich flavor.",
+    "image_url": "/static/images/miniprojectimages/mango.jpg"
+  },
+  {
+    "_id": "69b38024f87e896936c375bf",
+    "name": "Apple",
+    "category": "Fresh Fruits",
+    "description": "Crisp and sweet Washington apples.",
+    "image_url": "/static/images/miniprojectimages/pineapple.jpg"
+  },
+  {
+    "_id": "69b38024f87e896936c375c0",
+    "name": "Banana",
+    "category": "Fresh Fruits",
+    "description": "Fresh ripe Robusta bananas.",
+    "image_url": "/static/images/miniprojectimages/banana.jpg"
+  },
+  {
+    "_id": "69b38024f87e896936c375c1",
+    "name": "Orange",
+    "category": "Fresh Fruits",
+    "description": "Juicy Nagpur oranges, rich in Vitamin C.",
+    "image_url": "/static/images/miniprojectimages/orange.jpg"
+  },
+  {
+    "_id": "69b38024f87e896936c375c2",
+    "name": "Kiwi",
+    "category": "Fresh Fruits",
+    "description": "Premium imported green kiwi fruits.",
+    "image_url": "/static/images/miniprojectimages/kiwi.jpg"
+  },
+  {
+    "_id": "69b38024f87e896936c375c3",
+    "name": "Papaya",
+    "category": "Fresh Fruits",
+    "description": "Fresh organic ripe papaya.",
+    "image_url": "/static/images/miniprojectimages/papaya.jpg"
+  },
+  {
+    "_id": "69b38024f87e896936c375c4",
+    "name": "Grapes",
+    "category": "Fresh Fruits",
+    "description": "Fresh green seedless grapes.",
+    "image_url": "/static/images/miniprojectimages/black grapes.jpg"
+  },
+  {
+    "_id": "69b38024f87e896936c375c5",
+    "name": "Pineapple",
+    "category": "Fresh Fruits",
+    "description": "Freshly cut sweet pineapple.",
+    "image_url": "/static/images/miniprojectimages/pineapple.jpg"
+  },
+  {
+    "_id": "69b38024f87e896936c375c6",
+    "name": "Carrot",
+    "category": "Vegetables",
+    "description": "Fresh crunchy orange carrots.",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b38024f87e896936c375c7",
+    "name": "Beetroot",
+    "category": "Vegetables",
+    "description": "Fresh healthy beetroots.",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b38024f87e896936c375c8",
+    "name": "Potato",
+    "category": "Vegetables",
+    "description": "Fresh farm potatoes.",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b38024f87e896936c375c9",
+    "name": "Onion",
+    "category": "Vegetables",
+    "description": "Fresh red onions.",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b38024f87e896936c375ca",
+    "name": "Tomato",
+    "category": "Vegetables",
+    "description": "Fresh red juicy tomatoes.",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b38024f87e896936c375cb",
+    "name": "Cabbage",
+    "category": "Vegetables",
+    "description": "Fresh whole green cabbage.",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b36",
+    "name": "Fresh Tomatoes (1kg)",
+    "description": "Farm fresh red tomatoes.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b37",
+    "name": "Onions (1kg)",
+    "description": "Premium quality red onions.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b38",
+    "name": "Potatoes (1kg)",
+    "description": "Organic, smooth-skinned potatoes.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b39",
+    "name": "Carrots (500g)",
+    "description": "Crunchy, sweet orange carrots.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b3a",
+    "name": "Broccoli (1pc)",
+    "description": "Fresh and dense green broccoli.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b3b",
+    "name": "Green Capsicum (500g)",
+    "description": "Crisp green bell peppers.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b3c",
+    "name": "Cauliflower (1pc)",
+    "description": "Fresh whole cauliflower.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b3d",
+    "name": "Green Peas (500g)",
+    "description": "Fresh green peas in pods.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b3e",
+    "name": "Cabbage (1pc)",
+    "description": "Fresh green leafy cabbage.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b3f",
+    "name": "Mushroom (200g)",
+    "description": "Fresh button mushrooms.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b40",
+    "name": "Fresh Tomatoes (1kg)",
+    "description": "Farm fresh red tomatoes.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b41",
+    "name": "Onions (1kg)",
+    "description": "Premium quality red onions.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b42",
+    "name": "Potatoes (1kg)",
+    "description": "Organic, smooth-skinned potatoes.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b43",
+    "name": "Carrots (500g)",
+    "description": "Crunchy, sweet orange carrots.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b44",
+    "name": "Broccoli (1pc)",
+    "description": "Fresh and dense green broccoli.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b45",
+    "name": "Green Capsicum (500g)",
+    "description": "Crisp green bell peppers.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b46",
+    "name": "Cauliflower (1pc)",
+    "description": "Fresh whole cauliflower.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b47",
+    "name": "Green Peas (500g)",
+    "description": "Fresh green peas in pods.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b48",
+    "name": "Cabbage (1pc)",
+    "description": "Fresh green leafy cabbage.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b49",
+    "name": "Mushroom (200g)",
+    "description": "Fresh button mushrooms.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b4a",
+    "name": "Fresh Tomatoes (1kg)",
+    "description": "Farm fresh red tomatoes.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b4b",
+    "name": "Onions (1kg)",
+    "description": "Premium quality red onions.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b4c",
+    "name": "Potatoes (1kg)",
+    "description": "Organic, smooth-skinned potatoes.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b4d",
+    "name": "Carrots (500g)",
+    "description": "Crunchy, sweet orange carrots.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_1.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b4e",
+    "name": "Broccoli (1pc)",
+    "description": "Fresh and dense green broccoli.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b4f",
+    "name": "Green Capsicum (500g)",
+    "description": "Crisp green bell peppers.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b50",
+    "name": "Cauliflower (1pc)",
+    "description": "Fresh whole cauliflower.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b51",
+    "name": "Green Peas (500g)",
+    "description": "Fresh green peas in pods.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b52",
+    "name": "Cabbage (1pc)",
+    "description": "Fresh green leafy cabbage.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b3e63222111eab0c3e8b53",
+    "name": "Mushroom (200g)",
+    "description": "Fresh button mushrooms.",
+    "category": "Vegetables",
+    "image_url": "/static/images/products/vegetables_2.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addc4",
+    "name": "Lays Classic Salted",
+    "category": "Snacks",
+    "description": "Classic salted potato chips.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addc5",
+    "name": "Kurkure Masala Munch",
+    "category": "Snacks",
+    "description": "Spicy Indian snack.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addc6",
+    "name": "Doritos Nacho Cheese",
+    "category": "Snacks",
+    "description": "Cheesy crunch corn chips.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addc7",
+    "name": "Lays Family Pack",
+    "category": "Snacks",
+    "description": "Lays Family Pack.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addc8",
+    "name": "Kurkure Jumbo Pack",
+    "category": "Snacks",
+    "description": "Kurkure Jumbo Pack.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addc9",
+    "name": "Haldirams Mixture 1kg",
+    "category": "Snacks",
+    "description": "Crispy gram flour mix.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addca",
+    "name": "Local Mixture Pack \u20b95",
+    "category": "Snacks",
+    "description": "Small spicy mixture.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addcb",
+    "name": "Haldirams Salted Peanuts",
+    "category": "Snacks",
+    "description": "Crispy salted peanuts.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addcc",
+    "name": "Roasted Peanuts Packet",
+    "category": "Snacks",
+    "description": "Dry roasted organic peanuts.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addcd",
+    "name": "Britannia Biscuits",
+    "category": "Snacks",
+    "description": "Crunchy tea time biscuits.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addce",
+    "name": "Good Day Biscuits",
+    "category": "Snacks",
+    "description": "Rich cashew butter cookies.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addcf",
+    "name": "Dairy Milk Silk",
+    "category": "Snacks",
+    "description": "Smooth milk chocolate.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b41fc3dec173082e8addd0",
+    "name": "Kit Kat",
+    "category": "Snacks",
+    "description": "Crispy wafer fingers.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b43c1ecc2406169f34648e",
+    "name": "Cadbury Dairy Milk",
+    "category": "Daily Need",
+    "description": "Premium high-quality Cadbury Dairy Milk. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your daily need needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c1ecc2406169f34648f",
+    "name": "Biryani Masala",
+    "category": "Spices & Masalas",
+    "description": "Premium high-quality Biryani Masala. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your spices & masalas needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c1fcc2406169f346490",
+    "name": "Cadbury 5 Star Chocolate ",
+    "category": "Snacks",
+    "description": "Premium high-quality Cadbury 5 Star Chocolate . Sourced directly from trusted suppliers to guarantee freshness and authentic value for your snacks needs.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b43c1fcc2406169f346491",
+    "name": "Candy",
+    "category": "Groceries",
+    "description": "Premium high-quality Candy. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your groceries needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c1fcc2406169f346492",
+    "name": "Chiken Masala",
+    "category": "Spices & Masalas",
+    "description": "Premium high-quality Chiken Masala. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your spices & masalas needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c1fcc2406169f346493",
+    "name": "Chilli Powder",
+    "category": "Groceries",
+    "description": "Premium high-quality Chilli Powder. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your groceries needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c1fcc2406169f346494",
+    "name": "Colgate Baking Soda",
+    "category": "Household items",
+    "description": "Premium high-quality Colgate Baking Soda. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your household items needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c1fcc2406169f346495",
+    "name": "Colgate",
+    "category": "Household items",
+    "description": "Premium high-quality Colgate. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your household items needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c1fcc2406169f346496",
+    "name": "Dabur Red Paste",
+    "category": "Household items",
+    "description": "Premium high-quality Dabur Red Paste. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your household items needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c1fcc2406169f346497",
+    "name": "Dabar Red Paste Mega Pack",
+    "category": "Household items",
+    "description": "Premium high-quality Dabar Red Paste Mega Pack. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your household items needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c1fcc2406169f346498",
+    "name": "Doon Rice",
+    "category": "Grains",
+    "description": "Premium high-quality Doon Rice. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your grains needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c20cc2406169f346499",
+    "name": "Eclares",
+    "category": "Groceries",
+    "description": "Premium high-quality Eclares. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your groceries needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c20cc2406169f34649a",
+    "name": "Garam Masala India",
+    "category": "Spices & Masalas",
+    "description": "Premium high-quality Garam Masala India. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your spices & masalas needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c20cc2406169f34649b",
+    "name": "Indian Gate Basmati",
+    "category": "Groceries",
+    "description": "Premium high-quality Indian Gate Basmati. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your groceries needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c20cc2406169f34649c",
+    "name": "Jasmine Rice",
+    "category": "Grains",
+    "description": "Premium high-quality Jasmine Rice. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your grains needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c20cc2406169f34649d",
+    "name": "Kurkure",
+    "category": "Snacks",
+    "description": "Premium high-quality Kurkure. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your snacks needs.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b43c20cc2406169f34649e",
+    "name": "Lays",
+    "category": "Snacks",
+    "description": "Premium high-quality Lays. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your snacks needs.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b43c20cc2406169f34649f",
+    "name": "Lipton Green Tea Powder 500X500",
+    "category": "Tea & Coffee",
+    "description": "Premium high-quality Lipton Green Tea Powder 500X500. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your tea & coffee needs.",
+    "image_url": "/static/images/products/drinks_2.png"
+  },
+  {
+    "_id": "69b43c20cc2406169f3464a0",
+    "name": "Nestle Hot Cocoa Mix",
+    "category": "Tea & Coffee",
+    "description": "Premium high-quality Nestle Hot Cocoa Mix. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your tea & coffee needs.",
+    "image_url": "/static/images/products/drinks_2.png"
+  },
+  {
+    "_id": "69b43c20cc2406169f3464a1",
+    "name": "Parle G",
+    "category": "Snacks",
+    "description": "Premium high-quality Parle G. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your snacks needs.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b43c21cc2406169f3464a2",
+    "name": "Premium Garam Masala Powder ",
+    "category": "Spices & Masalas",
+    "description": "Premium high-quality Premium Garam Masala Powder . Sourced directly from trusted suppliers to guarantee freshness and authentic value for your spices & masalas needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c21cc2406169f3464a3",
+    "name": "Saffola Masala Oats",
+    "category": "Spices & Masalas",
+    "description": "Premium high-quality Saffola Masala Oats. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your spices & masalas needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c21cc2406169f3464a4",
+    "name": "Sambar Masala",
+    "category": "Spices & Masalas",
+    "description": "Premium high-quality Sambar Masala. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your spices & masalas needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c21cc2406169f3464a5",
+    "name": "Sensodyne",
+    "category": "Household items",
+    "description": "Premium high-quality Sensodyne. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your household items needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c21cc2406169f3464a6",
+    "name": "Tata Tea",
+    "category": "Tea & Coffee",
+    "description": "Premium high-quality Tata Tea. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your tea & coffee needs.",
+    "image_url": "/static/images/products/drinks_2.png"
+  },
+  {
+    "_id": "69b43c21cc2406169f3464a7",
+    "name": "3 Roses Tea Powder",
+    "category": "Tea & Coffee",
+    "description": "Premium high-quality 3 Roses Tea Powder. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your tea & coffee needs.",
+    "image_url": "/static/images/products/drinks_2.png"
+  },
+  {
+    "_id": "69b43c22cc2406169f3464a8",
+    "name": "Amul Milk",
+    "category": "Daily Need",
+    "description": "Premium high-quality Amul Milk. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your daily need needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c22cc2406169f3464a9",
+    "name": "Avacado",
+    "category": "Groceries",
+    "description": "Premium high-quality Avacado. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your groceries needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c22cc2406169f3464aa",
+    "name": "Basmati",
+    "category": "Groceries",
+    "description": "Premium high-quality Basmati. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your groceries needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c22cc2406169f3464ab",
+    "name": "Besan Flour",
+    "category": "Grains",
+    "description": "Premium high-quality Besan Flour. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your grains needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c22cc2406169f3464ac",
+    "name": "Bingo Chip",
+    "category": "Snacks",
+    "description": "Premium high-quality Bingo Chip. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your snacks needs.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b43c23cc2406169f3464ad",
+    "name": "Blening Oil",
+    "category": "All Oils",
+    "description": "Premium high-quality Blening Oil. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your all oils needs.",
+    "image_url": "/static/images/products/oils_1.png"
+  },
+  {
+    "_id": "69b43c23cc2406169f3464ae",
+    "name": "Blue Berry",
+    "category": "Fresh Fruits",
+    "description": "Premium high-quality Blue Berry. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your fresh fruits needs.",
+    "image_url": "/static/images/miniprojectimages/blue berry.jpg"
+  },
+  {
+    "_id": "69b43c23cc2406169f3464af",
+    "name": "Brown Rice",
+    "category": "Grains",
+    "description": "Premium high-quality Brown Rice. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your grains needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c23cc2406169f3464b0",
+    "name": "Brown Sugar 1Kg",
+    "category": "Spices & Masalas",
+    "description": "Premium high-quality Brown Sugar 1Kg. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your spices & masalas needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c23cc2406169f3464b1",
+    "name": "Chana Dal",
+    "category": "Pulses",
+    "description": "Premium high-quality Chana Dal. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your pulses needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c23cc2406169f3464b2",
+    "name": "Cherry",
+    "category": "Fresh Fruits",
+    "description": "Premium high-quality Cherry. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your fresh fruits needs.",
+    "image_url": "/static/images/miniprojectimages/cherry.jpg"
+  },
+  {
+    "_id": "69b43c23cc2406169f3464b3",
+    "name": "Chips",
+    "category": "Snacks",
+    "description": "Premium high-quality Chips. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your snacks needs.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b43c23cc2406169f3464b4",
+    "name": "Coconut Oil",
+    "category": "All Oils",
+    "description": "Premium high-quality Coconut Oil. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your all oils needs.",
+    "image_url": "/static/images/products/oils_1.png"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464b5",
+    "name": "Coconut",
+    "category": "Groceries",
+    "description": "Premium high-quality Coconut. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your groceries needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464b6",
+    "name": "Corn Flour",
+    "category": "Grains",
+    "description": "Premium high-quality Corn Flour. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your grains needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464b7",
+    "name": "Cow Milk",
+    "category": "Daily Need",
+    "description": "Premium high-quality Cow Milk. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your daily need needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464b8",
+    "name": "Dabur Honey",
+    "category": "Honey",
+    "description": "Premium high-quality Dabur Honey. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your honey needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464b9",
+    "name": "Dragon Fruit",
+    "category": "Fresh Fruits",
+    "description": "Premium high-quality Dragon Fruit. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your fresh fruits needs.",
+    "image_url": "/static/images/miniprojectimages/dragon fruit.jpg"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464ba",
+    "name": "Grape Green",
+    "category": "Fresh Fruits",
+    "description": "Premium high-quality Grape Green. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your fresh fruits needs.",
+    "image_url": "/static/images/miniprojectimages/Grape-green.jpg"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464bb",
+    "name": "Green Tea Powder",
+    "category": "Tea & Coffee",
+    "description": "Premium high-quality Green Tea Powder. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your tea & coffee needs.",
+    "image_url": "/static/images/products/drinks_2.png"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464bc",
+    "name": "Green Moong Dal",
+    "category": "Pulses",
+    "description": "Premium high-quality Green Moong Dal. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your pulses needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464bd",
+    "name": "Guavas",
+    "category": "Groceries",
+    "description": "Premium high-quality Guavas. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your groceries needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464be",
+    "name": "Heritage Milk",
+    "category": "Daily Need",
+    "description": "Premium high-quality Heritage Milk. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your daily need needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464bf",
+    "name": "Jack Fruit",
+    "category": "Fresh Fruits",
+    "description": "Premium high-quality Jack Fruit. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your fresh fruits needs.",
+    "image_url": "/static/images/miniprojectimages/jack fruit.jpg"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464c0",
+    "name": "Jaggery",
+    "category": "Groceries",
+    "description": "Premium high-quality Jaggery. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your groceries needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c24cc2406169f3464c1",
+    "name": "Kur Kure Chip",
+    "category": "Snacks",
+    "description": "Premium high-quality Kur Kure Chip. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your snacks needs.",
+    "image_url": "/static/images/products/snacks_1.png"
+  },
+  {
+    "_id": "69b43c25cc2406169f3464c2",
+    "name": "Lion Honey",
+    "category": "Honey",
+    "description": "Premium high-quality Lion Honey. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your honey needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c25cc2406169f3464c3",
+    "name": "Maida",
+    "category": "Grains",
+    "description": "Premium high-quality Maida. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your grains needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c25cc2406169f3464c4",
+    "name": "Masoor Dal",
+    "category": "Pulses",
+    "description": "Premium high-quality Masoor Dal. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your pulses needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c26cc2406169f3464c5",
+    "name": "Moong Dal",
+    "category": "Pulses",
+    "description": "Premium high-quality Moong Dal. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your pulses needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c26cc2406169f3464c6",
+    "name": "Mulkanur Milk",
+    "category": "Daily Need",
+    "description": "Premium high-quality Mulkanur Milk. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your daily need needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c26cc2406169f3464c7",
+    "name": "Muskmelons",
+    "category": "Fresh Fruits",
+    "description": "Premium high-quality Muskmelons. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your fresh fruits needs.",
+    "image_url": "/static/images/miniprojectimages/muskmelons.jpg"
+  },
+  {
+    "_id": "69b43c26cc2406169f3464c8",
+    "name": "Oil Sunflower",
+    "category": "All Oils",
+    "description": "Premium high-quality Oil Sunflower. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your all oils needs.",
+    "image_url": "/static/images/products/oils_1.png"
+  },
+  {
+    "_id": "69b43c26cc2406169f3464c9",
+    "name": "Peanut Oil",
+    "category": "All Oils",
+    "description": "Premium high-quality Peanut Oil. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your all oils needs.",
+    "image_url": "/static/images/products/oils_1.png"
+  },
+  {
+    "_id": "69b43c26cc2406169f3464ca",
+    "name": "Pink Salt",
+    "category": "Spices & Masalas",
+    "description": "Premium high-quality Pink Salt. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your spices & masalas needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c27cc2406169f3464cb",
+    "name": "Poha",
+    "category": "Groceries",
+    "description": "Premium high-quality Poha. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your groceries needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c27cc2406169f3464cc",
+    "name": "Pomegranate ",
+    "category": "Groceries",
+    "description": "Premium high-quality Pomegranate . Sourced directly from trusted suppliers to guarantee freshness and authentic value for your groceries needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c27cc2406169f3464cd",
+    "name": "Ravva",
+    "category": "Grains",
+    "description": "Premium high-quality Ravva. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your grains needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c27cc2406169f3464ce",
+    "name": "Red Label Tea Powder",
+    "category": "Tea & Coffee",
+    "description": "Premium high-quality Red Label Tea Powder. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your tea & coffee needs.",
+    "image_url": "/static/images/products/drinks_2.png"
+  },
+  {
+    "_id": "69b43c27cc2406169f3464cf",
+    "name": "Rice Bran Oil",
+    "category": "All Oils",
+    "description": "Premium high-quality Rice Bran Oil. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your all oils needs.",
+    "image_url": "/static/images/products/oils_1.png"
+  },
+  {
+    "_id": "69b43c27cc2406169f3464d0",
+    "name": "Straberry",
+    "category": "Fresh Fruits",
+    "description": "Premium high-quality Straberry. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your fresh fruits needs.",
+    "image_url": "/static/images/miniprojectimages/straberry.jpg"
+  },
+  {
+    "_id": "69b43c27cc2406169f3464d1",
+    "name": "Sugar",
+    "category": "Spices & Masalas",
+    "description": "Premium high-quality Sugar. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your spices & masalas needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c27cc2406169f3464d2",
+    "name": "Tata Salt",
+    "category": "Spices & Masalas",
+    "description": "Premium high-quality Tata Salt. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your spices & masalas needs.",
+    "image_url": "/static/images/products/honey_spices_1.png"
+  },
+  {
+    "_id": "69b43c27cc2406169f3464d3",
+    "name": "Tata Chakra Gold Tea",
+    "category": "Tea & Coffee",
+    "description": "Premium high-quality Tata Chakra Gold Tea. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your tea & coffee needs.",
+    "image_url": "/static/images/products/drinks_2.png"
+  },
+  {
+    "_id": "69b43c28cc2406169f3464d4",
+    "name": "Toor Dal",
+    "category": "Pulses",
+    "description": "Premium high-quality Toor Dal. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your pulses needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c28cc2406169f3464d5",
+    "name": "Urad Dal",
+    "category": "Pulses",
+    "description": "Premium high-quality Urad Dal. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your pulses needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b43c28cc2406169f3464d6",
+    "name": "Watermelon",
+    "category": "Fresh Fruits",
+    "description": "Premium high-quality Watermelon. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your fresh fruits needs.",
+    "image_url": "/static/images/miniprojectimages/watermelon.jpg"
+  },
+  {
+    "_id": "69b43c28cc2406169f3464d7",
+    "name": "Wheat Flour",
+    "category": "Grains",
+    "description": "Premium high-quality Wheat Flour. Sourced directly from trusted suppliers to guarantee freshness and authentic value for your grains needs.",
+    "image_url": "/static/images/products/grains_1.png"
+  },
+  {
+    "_id": "69b4413449dd92521c1ff869",
+    "name": "Coca Cola",
+    "category": "Drinks",
+    "description": "Refreshing Coca Cola, best served chilled for a quenching experience.",
+    "image_url": "/static/images/products/drinks_1.png"
+  },
+  {
+    "_id": "69b4413449dd92521c1ff86a",
+    "name": "Sprite",
+    "category": "Drinks",
+    "description": "Crisp, refreshing and clean-tasting lemon and lime-flavored soft drink.",
+    "image_url": "/static/images/products/drinks_1.png"
+  },
+  {
+    "_id": "69b4413449dd92521c1ff86b",
+    "name": "Thums Up",
+    "category": "Drinks",
+    "description": "Strong cola taste that gives an intense rush, best enjoyed cold.",
+    "image_url": "/static/images/products/drinks_1.png"
+  },
+  {
+    "_id": "69b4413449dd92521c1ff86c",
+    "name": "Minute Maid Pulpy Orange",
+    "category": "Drinks",
+    "description": "Delicious orange juice with real orange pulp.",
+    "image_url": "/static/images/products/drinks_1.png"
+  },
+  {
+    "_id": "69b4413449dd92521c1ff86d",
+    "name": "Mango Juice",
+    "category": "Drinks",
+    "description": "Freshly made pure mango juice, full of natural sweetness.",
+    "image_url": "/static/images/products/drinks_2.png"
+  },
+  {
+    "_id": "69b4413449dd92521c1ff86e",
+    "name": "Badam Milk",
+    "category": "Drinks",
+    "description": "Almond flavored milk beverage, rich and tasty.",
+    "image_url": "/static/images/products/drinks_2.png"
+  },
+  {
+    "_id": "69b4413449dd92521c1ff86f",
+    "name": "Fruity",
+    "category": "Drinks",
+    "description": "Kid's favorite fruit flavored drink.",
+    "image_url": "/static/images/products/drinks_2.png"
+  }
+]

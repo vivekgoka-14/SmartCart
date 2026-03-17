@@ -1,0 +1,138 @@
+Mango|Fresh Fruits
+Apple|Fresh Fruits
+Banana|Fresh Fruits
+Orange|Fresh Fruits
+Kiwi|Fresh Fruits
+Papaya|Fresh Fruits
+Grapes|Fresh Fruits
+Pineapple|Fresh Fruits
+Carrot|Vegetables
+Beetroot|Vegetables
+Potato|Vegetables
+Onion|Vegetables
+Tomato|Vegetables
+Cabbage|Vegetables
+Fresh Tomatoes (1kg)|Vegetables
+Onions (1kg)|Vegetables
+Potatoes (1kg)|Vegetables
+Carrots (500g)|Vegetables
+Broccoli (1pc)|Vegetables
+Green Capsicum (500g)|Vegetables
+Cauliflower (1pc)|Vegetables
+Green Peas (500g)|Vegetables
+Cabbage (1pc)|Vegetables
+Mushroom (200g)|Vegetables
+Fresh Tomatoes (1kg)|Vegetables
+Onions (1kg)|Vegetables
+Potatoes (1kg)|Vegetables
+Carrots (500g)|Vegetables
+Broccoli (1pc)|Vegetables
+Green Capsicum (500g)|Vegetables
+Cauliflower (1pc)|Vegetables
+Green Peas (500g)|Vegetables
+Cabbage (1pc)|Vegetables
+Mushroom (200g)|Vegetables
+Fresh Tomatoes (1kg)|Vegetables
+Onions (1kg)|Vegetables
+Potatoes (1kg)|Vegetables
+Carrots (500g)|Vegetables
+Broccoli (1pc)|Vegetables
+Green Capsicum (500g)|Vegetables
+Cauliflower (1pc)|Vegetables
+Green Peas (500g)|Vegetables
+Cabbage (1pc)|Vegetables
+Mushroom (200g)|Vegetables
+Lays Classic Salted|Snacks
+Kurkure Masala Munch|Snacks
+Doritos Nacho Cheese|Snacks
+Lays Family Pack|Snacks
+Kurkure Jumbo Pack|Snacks
+Haldirams Mixture 1kg|Snacks
+Local Mixture Pack ₹5|Snacks
+Haldirams Salted Peanuts|Snacks
+Roasted Peanuts Packet|Snacks
+Britannia Biscuits|Snacks
+Good Day Biscuits|Snacks
+Dairy Milk Silk|Snacks
+Kit Kat|Snacks
+Cadbury Dairy Milk|Daily Need
+Biryani Masala|Spices & Masalas
+Cadbury 5 Star Chocolate |Snacks
+Candy|Groceries
+Chiken Masala|Spices & Masalas
+Chilli Powder|Groceries
+Colgate Baking Soda|Household items
+Colgate|Household items
+Dabur Red Paste|Household items
+Dabar Red Paste Mega Pack|Household items
+Doon Rice|Grains
+Eclares|Groceries
+Garam Masala India|Spices & Masalas
+Indian Gate Basmati|Groceries
+Jasmine Rice|Grains
+Kurkure|Snacks
+Lays|Snacks
+Lipton Green Tea Powder 500X500|Tea & Coffee
+Nestle Hot Cocoa Mix|Tea & Coffee
+Parle G|Snacks
+Premium Garam Masala Powder |Spices & Masalas
+Saffola Masala Oats|Spices & Masalas
+Sambar Masala|Spices & Masalas
+Sensodyne|Household items
+Tata Tea|Tea & Coffee
+3 Roses Tea Powder|Tea & Coffee
+Amul Milk|Daily Need
+Avacado|Groceries
+Basmati|Groceries
+Besan Flour|Grains
+Bingo Chip|Snacks
+Blening Oil|All Oils
+Blue Berry|Fresh Fruits
+Brown Rice|Grains
+Brown Sugar 1Kg|Spices & Masalas
+Chana Dal|Pulses
+Cherry|Fresh Fruits
+Chips|Snacks
+Coconut Oil|All Oils
+Coconut|Groceries
+Corn Flour|Grains
+Cow Milk|Daily Need
+Dabur Honey|Honey
+Dragon Fruit|Fresh Fruits
+Grape Green|Fresh Fruits
+Green Tea Powder|Tea & Coffee
+Green Moong Dal|Pulses
+Guavas|Groceries
+Heritage Milk|Daily Need
+Jack Fruit|Fresh Fruits
+Jaggery|Groceries
+Kur Kure Chip|Snacks
+Lion Honey|Honey
+Maida|Grains
+Masoor Dal|Pulses
+Moong Dal|Pulses
+Mulkanur Milk|Daily Need
+Muskmelons|Fresh Fruits
+Oil Sunflower|All Oils
+Peanut Oil|All Oils
+Pink Salt|Spices & Masalas
+Poha|Groceries
+Pomegranate |Groceries
+Ravva|Grains
+Red Label Tea Powder|Tea & Coffee
+Rice Bran Oil|All Oils
+Straberry|Fresh Fruits
+Sugar|Spices & Masalas
+Tata Salt|Spices & Masalas
+Tata Chakra Gold Tea|Tea & Coffee
+Toor Dal|Pulses
+Urad Dal|Pulses
+Watermelon|Fresh Fruits
+Wheat Flour|Grains
+Coca Cola|Drinks
+Sprite|Drinks
+Thums Up|Drinks
+Minute Maid Pulpy Orange|Drinks
+Mango Juice|Drinks
+Badam Milk|Drinks
+Fruity|Drinks

@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+
+{% block title %}Smart Cart Plus - Subscription & Offers{% endblock %}
+
+{% block head %}
+<style>
+    /* Styling for the Subscription Page */
+    .hero-section {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+        border-radius: var(--border-radius);
+        margin-bottom: 40px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(234, 179, 8, 0.1) 0%, rgba(255,255,255,0) 70%);
+        animation: rotateBg 15s linear infinite;
+        z-index: 0;
+    }
+
+    @keyframes rotateBg {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero-title {
+        font-size: 42px;
+        font-weight: 800;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #fef08a 0%, #eab308 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+        color: #cbd5e1;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .btn-gold {
+        background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-gold:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(234, 179, 8, 0.4);
+        color: white;
+    }
+
+    /* Benefits Grid */
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+
+    .benefit-card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s;
+        border: 1px solid #f1f5f9;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .benefit-card:hover {
+        transform: translateY(-5px);
+        border-color: #eab308;
+    }
+
+    .benefit-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #eab308 0%, #ca8a04 100%);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .benefit-card:hover::before {
+        opacity: 1;
+    }
+
+    .benefit-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 20px;
+        background: #fef9c3;
+        color: #ca8a04;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+    }
+
+    .benefit-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 15px;
+    }
+
+    .benefit-desc {
+        color: var(--text-light);
+        line-height: 1.6;
+        font-size: 15px;
+    }
+
+    /* Gift Section */
+    .gift-banner {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        border-radius: var(--border-radius);
+        padding: 40px;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        box-shadow: var(--card-shadow);
+        margin-bottom: 50px;
+    }
+
+    .gift-content {
+        flex: 1;
+    }
+
+    .gift-content h3 {
+        font-size: 26px;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .gift-images {
+        display: flex;
+        gap: 15px;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .gift-item {
+        width: 100px;
+        height: 100px;
+        background: white;
+        border-radius: 12px;
+        padding: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--text-dark);
+        font-size: 12px;
+        font-weight: 600;
+        transition: transform 0.3s;
+    }
+
+    .gift-item:hover {
+        transform: scale(1.05) rotate(3deg);
+    }
+    
+    .gift-item i {
+        font-size: 28px;
+        color: var(--primary-color);
+        margin-bottom: 8px;
+    }
+
+    @media (max-width: 768px) {
+        .gift-banner { flex-direction: column; text-align: center; }
+        .hero-title { font-size: 32px; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="hero-section animate-float">
+        <div class="hero-content">
+            <h1 class="hero-title"><i class="fa-solid fa-crown"></i> Smart Cart Plus</h1>
+            <p class="hero-subtitle">Elevate your shopping experience. Join our premium subscription today and unlock an incredible world of free deliveries, exclusive gifts, and flexible payment options.</p>
+            <a href="{{ url_for('subscription_checkout') }}" class="btn-gold">
+                Subscribe for ₹299/month <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="benefits-grid">
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fa-solid fa-truck-fast"></i>
+            </div>
+            <h3 class="benefit-title">Quick & Free Delivery</h3>
+            <p class="benefit-desc">Say goodbye to delivery charges! Plus members get unlimited <strong>free express delivery</strong> on all orders, ensuring your groceries and fresh fruits reach you faster than ever.</p>
+        </div>
+        
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fa-solid fa-credit-card"></i>
+            </div>
+            <h3 class="benefit-title">Postpaid Privileges</h3>
+            <p class="benefit-desc">Enjoy exactly <strong>1 week of free postpaid services</strong>. Need an extension? Plus members incur a significantly lower penalty compared to standard accounts.</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+            <h3 class="benefit-title">Priority Support</h3>
+            <p class="benefit-desc">Jump the queue with 24/7 dedicated customer service. Whatever issue you face, our premium support team will resolve it instantly.</p>
+        </div>
+    </div>
+
+    <div class="gift-banner">
+        <div class="gift-content">
+            <h3>🎁 Premium Gifts with Large Orders</h3>
+            <p style="font-size: 16px; opacity: 0.9; line-height: 1.5; margin-bottom: 0;">As a Plus member, whenever you place an order exceeding <strong>₹1,500</strong>, we will include a complimentary high-quality gift specifically chosen to compliment your home!</p>
+        </div>
+        <div class="gift-images">
+            <div class="gift-item">
+                <i class="fa-solid fa-basket-shopping"></i>
+                Basket
+            </div>
+            <div class="gift-item">
+                <i class="fa-solid fa-wine-glass"></i>
+                Glassware
+            </div>
+            <div class="gift-item">
+                <i class="fa-solid fa-box-archive"></i>
+                Hot Box
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="color: var(--text-dark); margin-bottom: 15px;">Ready to Upgrade?</h2>
+        <p style="color: var(--text-light); margin-bottom: 25px;">Join thousands of Smart Cart Plus members and start saving today.</p>
+        <a href="{{ url_for('subscription_checkout') }}" class="btn btn-primary" style="padding: 12px 40px; font-size: 16px; border-radius: 30px;">
+            Start Your Plus Journey
+        </a>
+    </div>
+
+{% endblock %}
