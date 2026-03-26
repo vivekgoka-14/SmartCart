@@ -1,0 +1,69 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit, backgrounds}
+
+\tikzset{
+    block/.style={rectangle, draw, minimum width=3cm, minimum height=1cm, text centered, font=\sffamily\small, thick, fill=white},
+    database/.style={cylinder, draw, shape border rotate=90, minimum width=2.2cm, minimum height=1.8cm, text centered, font=\sffamily\small, thick, fill=white},
+    cloud/.style={ellipse, draw, minimum width=3.2cm, minimum height=1.2cm, text centered, font=\sffamily\small, thick, fill=white},
+    arrow/.style={thick,->,>=stealth}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2.2cm and 2.5cm, every node/.style={font=\sffamily\small}]
+
+    % --- LAYER 1: CLIENT ---
+    \node (browser) [block] {\textbf{Web Browser} \\ (User Interface)};
+    
+    % --- LAYER 2: FRONTEND ---
+    \node (frontend) [block, below=1.5cm of browser] {\textbf{Frontend Component} \\ (HTML / CSS / JS)};
+    
+    % --- LAYER 3: BACKEND (FLASK SERVER) ---
+    % Horizontal distribution set wide enough to prevent merging, but more compact than before
+    \node (auth) [block, below left=2.2cm and 1.2cm of frontend] {\textbf{Auth Controller} \\ (OTP, Login, Register)};
+    \node (products) [block, below right=2.2cm and 1.2cm of frontend] {\textbf{Product Catalog} \\ (Browsing & Search)};
+    
+    % Second Row: Cart and AI
+    \node (cart) [block, below=1.8cm of auth] {\textbf{Cart \& Orders} \\ (Order Management)};
+    \node (ai) [block, below=1.8cm of products] {\textbf{Sahaayi AI} \\ (AI Assistant Bot)};
+    
+    % Admin node placed clearly below
+    \node (admin) [block, below=1.8cm of cart, xshift=2.5cm, minimum width=8cm] {\textbf{Admin Dashboard \& Analytics} \\ (Analytics, Stocks, \& Notifications)};
+    
+    % Background box that groups all backend components
+    \begin{scope}[on background layer]
+        \node (backend_box) [draw, dashed, thick, fill=gray!2, inner sep=0.7cm, 
+               fit=(auth) (products) (cart) (ai) (admin), 
+               label={[yshift=0.3cm]above:\textbf{Flask Application Server (Backend Logic)}}] {};
+    \end{scope}
+
+    % --- LAYER 4: EXTERNAL SERVICES & DATABASE ---
+    % SMTP far to the left of its caller
+    \node (smtp) [cloud, left=2.5cm of auth] {\textbf{Gmail SMTP} \\ (Mailing Service)};
+    
+    % MongoDB clearly at the bottom
+    \node (mongodb) [database, below=1.5cm of admin] {\textbf{MongoDB Atlas} \\ (Storage)};
+
+    % --- CONNECTORS ---
+    % Explicit line routing
+    \draw [arrow] (browser) -- (frontend);
+    
+    \draw [arrow] (frontend.south) -- ++(0,-0.8) -| (auth.north);
+    \draw [arrow] (frontend.south) -- ++(0,-0.8) -| (products.north);
+    
+    \draw [arrow] (auth) -- (cart);
+    \draw [arrow] (products) -- (ai);
+    
+    % Routing lines to Admin
+    \draw [arrow] (cart.south) |- ([xshift=-2.5cm]admin.north);
+    \draw [arrow] (ai.south) |- ([xshift=2.5cm]admin.north);
+    
+    \draw [arrow] (admin) -- (mongodb);
+    
+    % Dedicated service line
+    \draw [arrow] (auth.west) -- (smtp.east);
+
+\end{tikzpicture}
+
+\end{document}

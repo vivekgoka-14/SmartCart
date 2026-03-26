@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block title %}Products - Smart Cart{% endblock %}
+
+{% block head %}
+<style>
+    .store-layout {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+        width: 250px;
+        background: white;
+        padding: 20px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--card-shadow);
+        position: sticky;
+        top: 90px;
+        flex-shrink: 0;
+    }
+
+    .filter-group {
+        margin-bottom: 25px;
+    }
+
+    .filter-group h3 {
+        font-size: 16px;
+        color: var(--text-dark);
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .category-list li {
+        margin-bottom: 10px;
+    }
+
+    .category-list a {
+        color: var(--text-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: var(--transition);
+        padding: 5px 0;
+    }
+
+    .category-list a:hover, .category-list a.active {
+        color: var(--primary-color);
+        font-weight: 500;
+        padding-left: 5px;
+    }
+
+    /* Main Content */
+    .store-content {
+        flex: 1;
+    }
+
+    .store-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        background: white;
+        padding: 15px 20px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--card-shadow);
+    }
+
+    .results-text {
+        color: var(--text-light);
+    }
+
+    .results-text strong {
+        color: var(--text-dark);
+    }
+    
+    @media (max-width: 768px) {
+        .store-layout { flex-direction: column; }
+        .sidebar { width: 100%; position: static; }
+        .store-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="store-layout">
+    <!-- Sidebar Filters -->
+    <aside class="sidebar">
+        <div class="filter-group">
+            <h3>Categories</h3>
+            <ul class="category-list">
+                <li>
+                    <a href="{{ url_for('products') }}" class="{% if not selected_category %}active{% endif %}">
+                        All Products
+                    </a>
+                </li>
+                {% for cat in categories %}
+                <li>
+                    <a href="{{ url_for('products', category=cat.name) }}" class="{% if selected_category == cat.name %}active{% endif %}">
+                        {{ cat.name }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="filter-group">
+            <h3>Quick Links</h3>
+            <ul class="category-list">
+                <li><a href="{{ url_for('products') }}"><i class="fa-solid fa-fire text-danger" style="color: #ef4444; width: 20px;"></i> Featured</a></li>
+                <li><a href="{{ url_for('products') }}"><i class="fa-solid fa-tag text-warning" style="color: #f59e0b; width: 20px;"></i> Offers</a></li>
+                {% if 'user_id' in session %}
+                <li><a href="{{ url_for('profile') }}"><i class="fa-solid fa-heart text-danger" style="color: #ef4444; width: 20px;"></i> My Wishlist</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Product Grid -->
+    <div class="store-content">
+        <div class="store-header">
+            <div class="results-text">
+                {% if query %}
+                    Search results for: <strong>"{{ query }}"</strong>
+                {% elif selected_category %}
+                    Showing Category: <strong>{{ selected_category }}</strong>
+                {% else %}
+                    Showing <strong>All Products</strong>
+                {% endif %}
+                <br>
+                <small>Found {{ products|length }} items</small>
+            </div>
+            
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <label for="sort" style="color: var(--text-light); font-size: 14px;">Sort by:</label>
+                <select id="sort" class="form-control" style="width: auto; padding: 8px 12px; font-size: 14px;">
+                    <option value="default">Default Sorting</option>
+                    <option value="price_asc">Price: Low to High</option>
+                    <option value="price_desc">Price: High to Low</option>
+                    <option value="newest">Newest First</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="products-grid">
+            {% if products %}
+                {% for product in products %}
+                <div class="product-card">
+                    <img src="{{ product.image_url or 'https://via.placeholder.com/300x200?text=' ~ product.name|urlencode }}" alt="{{ product.name }}" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">{{ product.category }}</span>
+                        <a href="{{ url_for('product_detail', product_id=product._id|string) }}" class="product-name">{{ product.name }}</a>
+                        
+                        <div class="product-price-row">
+                            <div>
+                                <span class="price">₹{{ "%.2f"|format(product.price) }}</span>
+                                {% if product.compare_price %}
+                                <span class="compare-price">₹{{ "%.2f"|format(product.compare_price) }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: auto;">
+                            <!-- Form to add to wishlist -->
+                            {% if 'user_id' in session %}
+                            <form action="{{ url_for('toggle_wishlist', product_id=product._id|string) }}" method="POST">
+                                <button type="submit" class="btn btn-outline" style="width: 100%; padding: 8px; border-color: #e2e8f0; color: #94a3b8;" title="Add to Wishlist">
+                                    <i class="fa-regular fa-heart"></i> Add to Wishlist
+                                </button>
+                            </form>
+                            {% endif %}
+                            
+                            <!-- Form to add to cart & buy now-->
+                            <form action="{{ url_for('add_to_cart', product_id=product._id|string) }}" method="POST" style="display: flex; gap: 8px; flex-direction: column;">
+                                {% if product.stock is not none and product.stock > 0 %}
+                                <input type="hidden" name="qty" value="1">
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="submit" class="btn btn-primary" style="flex: 1; padding: 10px 5px; font-size: 13px; background-color: #f59e0b; border-color: #f59e0b; color: white;">
+                                        Add to Cart
+                                    </button>
+                                    <button type="submit" name="buy_now" value="true" class="btn btn-primary" style="flex: 1; padding: 10px 5px; font-size: 13px; background-color: #ea580c; border-color: #ea580c; color: white;">
+                                        Buy Now
+                                    </button>
+                                </div>
+                                {% else %}
+                                <button type="button" class="btn btn-danger" disabled style="width: 100%; padding: 10px; font-size: 13px; opacity: 0.7;">
+                                    Out of Stock
+                                </button>
+                                {% endif %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: white; border-radius: var(--border-radius); box-shadow: var(--card-shadow);">
+                    <i class="fa-solid fa-magnifying-glass" style="font-size: 48px; color: var(--text-light); margin-bottom: 20px;"></i>
+                    <h3 style="color: var(--text-dark); margin-bottom: 10px;">No products found</h3>
+                    <p style="color: var(--text-light); margin-bottom: 20px;">We couldn't find any items matching your criteria.</p>
+                    <a href="{{ url_for('products') }}" class="btn btn-outline">Clear Filters</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

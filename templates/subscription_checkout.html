@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout - Smart Cart Plus{% endblock %}
+
+{% block head %}
+<style>
+    .checkout-container {
+        max-width: 900px;
+        margin: 40px auto;
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    .checkout-form-section {
+        flex: 1;
+        background: white;
+        padding: 30px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--card-shadow);
+    }
+
+    .order-summary-section {
+        width: 350px;
+        background: linear-gradient(135deg, #fef9c3 0%, #fef08a 100%);
+        padding: 30px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--card-shadow);
+        border: 1px solid #eab308;
+    }
+
+    .summary-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #854d0e;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        font-size: 16px;
+        color: #713f12;
+    }
+
+    .summary-total {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 2px dashed #ca8a04;
+        font-size: 24px;
+        font-weight: bold;
+        color: #854d0e;
+    }
+
+    .feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 0 0;
+    }
+
+    .feature-list li {
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #713f12;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .feature-list i {
+        color: #ca8a04;
+        margin-top: 3px;
+    }
+
+    .payment-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .payment-option {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        border: 1px solid #e2e8f0;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+    .payment-option:hover {
+        border-color: var(--primary-color);
+        background: #f8fafc;
+    }
+
+    .payment-option input[type="radio"] {
+        accent-color: var(--primary-color);
+        transform: scale(1.2);
+    }
+
+    .payment-option i {
+        font-size: 24px;
+        color: var(--primary-color);
+    }
+    
+    .btn-pay {
+        background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+        color: white;
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: 600;
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: transform 0.2s;
+        box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+    }
+
+    .btn-pay:hover {
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+        .checkout-container {
+            flex-direction: column-reverse;
+        }
+        .order-summary-section {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="checkout-container">
+    
+    <!-- Payment Form -->
+    <div class="checkout-form-section">
+        <h2 style="margin-top: 0; margin-bottom: 20px; color: var(--text-dark);">Complete Your Subscription</h2>
+        
+        {% if 'user_id' not in session %}
+        <div class="alert alert-warning" style="margin-bottom: 25px;">
+            <i class="fa-solid fa-triangle-exclamation"></i> You are not logged in. <a href="{{ url_for('login') }}">Log in</a> or <a href="{{ url_for('register') }}">Sign up</a> to subscribe to Smart Cart Plus.
+        </div>
+        {% else %}
+        <form action="{{ url_for('subscription_checkout') }}" method="POST">
+            
+            <h3 style="margin-bottom: 15px; font-size: 18px; color: var(--text-dark);">Select Payment Method</h3>
+            <div class="payment-methods">
+                <label class="payment-option">
+                    <input type="radio" name="payment_method" value="Credit/Debit Card" required checked>
+                    <i class="fa-regular fa-credit-card"></i>
+                    <div>
+                        <strong>Credit / Debit Card</strong>
+                        <div style="font-size: 12px; color: var(--text-light);">Visa, MasterCard, Amex</div>
+                    </div>
+                </label>
+                
+                <label class="payment-option">
+                    <input type="radio" name="payment_method" value="UPI">
+                    <i class="fa-brands fa-google-pay"></i>
+                    <div>
+                        <strong>UPI (Google Pay, PhonePe, Paytm)</strong>
+                        <div style="font-size: 12px; color: var(--text-light);">Instant digital payment</div>
+                    </div>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-pay">
+                <i class="fa-solid fa-lock"></i> Pay ₹299 & Subscribe
+            </button>
+            <p style="text-align: center; font-size: 12px; color: var(--text-light); margin-top: 15px;">
+                Secure 256-bit SSL encryption. Auto-renews monthly. Cancel anytime.
+            </p>
+        </form>
+        {% endif %}
+    </div>
+
+    <!-- Features & Summary -->
+    <div class="order-summary-section">
+        <h3 class="summary-title"><i class="fa-solid fa-crown"></i> Smart Cart Plus</h3>
+        
+        <div class="summary-item">
+            <span>Monthly Subscription</span>
+            <strong>₹299.00</strong>
+        </div>
+        
+        <div class="summary-total">
+            <span>Total to Pay</span>
+            <span>₹299.00</span>
+        </div>
+
+        <h4 style="margin-top: 30px; margin-bottom: 15px; color: #854d0e; font-size: 16px;">What you're getting:</h4>
+        <ul class="feature-list">
+            <li><i class="fa-solid fa-check-circle"></i> <strong>Unlimited Free & Express Delivery</strong> on all orders.</li>
+            <li><i class="fa-solid fa-check-circle"></i> <strong>Premium Complimentary Gifts</strong> on orders exceeding ₹1,500.</li>
+            <li><i class="fa-solid fa-check-circle"></i> <strong>1-Week Free Postpaid Services</strong> with low-penalty extensions.</li>
+            <li><i class="fa-solid fa-check-circle"></i> <strong>24/7 Priority VIP Support</strong>.</li>
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

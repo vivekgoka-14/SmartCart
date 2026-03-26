@@ -1,0 +1,754 @@
+{% extends 'base.html' %}
+
+{% block title %}Products - Smart Cart{% endblock %}
+
+{% block head %}
+<style>
+    body {
+        background: #f4f4f4;
+    }
+
+    /* HEADER */
+
+    header {
+        background: #222;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-size: 24px;
+    }
+
+    /* GRID */
+
+    .product-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* CARD */
+
+    .product {
+        background: white;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        transition: 0.3s;
+        animation: fadeIn 0.6s ease;
+    }
+
+    .product:hover {
+        transform: scale(1.05);
+    }
+
+    /* IMAGE */
+
+    .product img {
+        width: 100%;
+        height: 150px;
+        object-fit: contain;
+    }
+
+    /* NAME */
+
+    .product h4 {
+        margin: 10px 0 5px;
+    }
+
+    /* RATING */
+
+    .rating {
+        color: gold;
+        font-size: 14px;
+    }
+
+    /* PRICE */
+
+    .price {
+        color: green;
+        font-weight: bold;
+    }
+
+    /* AVAILABILITY */
+
+    .stock {
+        font-size: 13px;
+        color: #555;
+    }
+
+    /* BUTTON */
+
+    button {
+        background: #28a745;
+        border: none;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 8px;
+    }
+
+    button:hover {
+        background: #218838;
+    }
+
+    /* ANIMATION */
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ACTIONS */
+    .actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .btn-cart {
+        background: #f8fafc;
+        color: #28a745;
+        border: 1px solid #28a745;
+        flex: 1;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+
+    .btn-cart:hover {
+        background: #e6f4ea;
+    }
+
+    .btn-buy {
+        background: #28a745;
+        color: white;
+        border: none;
+        flex: 1;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+
+    .btn-buy:hover {
+        background: #218838;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .modal {
+        background: white;
+        width: 90%;
+        max-width: 800px;
+        max-height: 90vh;
+        border-radius: 12px;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #555;
+        z-index: 10;
+    }
+
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .modal-top {
+        display: flex;
+        gap: 30px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    .modal-img {
+        width: 300px;
+        height: 300px;
+        object-fit: contain;
+        border: 1px solid #f1f5f9;
+        border-radius: 8px;
+    }
+
+    .modal-info h2 {
+        margin: 0 0 10px 0;
+    }
+
+    .modal-info .price {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .modal-desc {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .reviews-box {
+        background: #f8fafc;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .review-item {
+        border-bottom: 1px solid #e2e8f0;
+        padding: 10px 0;
+    }
+
+    .review-item:last-child {
+        border-bottom: none;
+    }
+
+    .reviewer {
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .relevant-section h3 {
+        margin-bottom: 15px;
+    }
+
+    .relevant-grid {
+        display: flex;
+        gap: 15px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+
+    .relevant-card {
+        min-width: 150px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .relevant-card img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+    }
+
+    /* TOAST */
+    .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #333;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        font-size: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        display: none;
+        z-index: 2000;
+        animation: slideIn 0.3s ease;
+    }
+
+    .toast.success {
+        background: #28a745;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .modal-top {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-img {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+
+    /* CONTROLS */
+
+    .controls {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .controls input,
+    .controls select {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div
+    style="background: #222; color: white; padding: 15px; text-align: center; font-size: 24px; margin-bottom: 20px; border-radius: var(--border-radius);">
+    Groceries
+</div>
+
+<div class="controls">
+    <input type="text" id="searchInput" placeholder="Search products..." onkeyup="filterProducts()">
+
+    <select id="categoryFilter" onchange="filterProducts()">
+        <option value="All">All Categories</option>
+        <option value="Vegetables">Vegetables</option>
+        <option value="Fruits">Fruits</option>
+        <option value="Fresh Fruits">Fresh Fruits</option>
+        <option value="Snacks">Snacks</option>
+        <option value="Groceries">Groceries</option>
+        <option value="Daily Need">Daily Need</option>
+        <option value="Household items">Household items</option>
+        <option value="All Oils">All Oils</option>
+        <option value="Pulses">Pulses</option>
+        <option value="Grains">Grains</option>
+        <option value="Tea & Coffee">Tea & Coffee</option>
+        <option value="Spices & Masalas">Spices & Masalas</option>
+        <option value="Instant Foods">Instant Foods</option>
+        <option value="Instant Needs">Instant Needs</option>
+        <option value="Dry Fruits">Dry Fruits</option>
+        <option value="Honey">Honey</option>
+        {% for cat in db_categories %}
+        {% if cat.name not in ["Vegetables", "Fruits", "Fresh Fruits", "Snacks", "Daily Need", "Household items", "All Oils", "Pulses", "Grains", "Tea & Coffee", "Spices & Masalas", "Honey"] %}
+        <option value="{{ cat.name }}">{{ cat.name }}</option>
+        {% endif %}
+        {% endfor %}
+    </select>
+
+    <select id="sortOption" onchange="filterProducts()">
+        <option value="default">Sort By Default</option>
+        <option value="priceLow">Price: Low to High</option>
+        <option value="priceHigh">Price: High to Low</option>
+        <option value="rating">Rating: High to Low</option>
+        <option value="name">Name: A to Z</option>
+        <option value="category">Category-wise</option>
+    </select>
+</div>
+
+<div class="product-container" id="products"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="productModal" onclick="closeModal(event)">
+    <div class="modal">
+        <span class="close-btn" onclick="document.getElementById('productModal').style.display='none'">&times;</span>
+        <div class="modal-body" id="modalContent">
+            <!-- Injected via JS -->
+        </div>
+    </div>
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div class="toast" id="toastBox">Item Added to Cart!</div>
+
+<!-- Product Data -->
+<script id="products-json" type="application/json">
+{{ db_products | tojson | safe }}
+</script>
+
+<script>
+
+    /* BASE PRODUCT LIST */
+
+    const baseProducts = [
+        // Fresh Fruits (From miniprojectimages)
+        { name: "Fresh Mango", price: 120, img: "/static/images/miniprojectimages/mango.jpg", rating: 4.8, category: "Fruits" },
+        { name: "Fresh Apple", price: 150, img: "/static/images/miniprojectimages/apple.jpg", rating: 4.7, category: "Fruits" },
+        { name: "Banana Bunch", price: 60, img: "/static/images/miniprojectimages/banana.jpg", rating: 4.6, category: "Fruits" },
+        { name: "Sweet Orange", price: 80, img: "/static/images/miniprojectimages/orange.jpg", rating: 4.5, category: "Fruits" },
+        { name: "Fresh Avocado", price: 200, img: "/static/images/miniprojectimages/avacado.jpg", rating: 4.4, category: "Fruits" },
+        { name: "Kiwi Fruit", price: 180, img: "/static/images/miniprojectimages/kiwi.jpg", rating: 4.7, category: "Fruits" },
+        { name: "Fresh Papaya", price: 90, img: "/static/images/miniprojectimages/papaya.jpg", rating: 4.3, category: "Fruits" },
+        { name: "Blue Berries", price: 250, img: "/static/images/miniprojectimages/blue berry.jpg", rating: 4.9, category: "Fruits" },
+        { name: "Fresh Cherry", price: 300, img: "/static/images/miniprojectimages/cherry.jpg", rating: 4.8, category: "Fruits" },
+        { name: "Dragon Fruit", price: 220, img: "/static/images/miniprojectimages/dragon fruit.jpg", rating: 4.7, category: "Fruits" },
+        { name: "Green Grapes", price: 140, img: "/static/images/miniprojectimages/Grape-green.jpg", rating: 4.6, category: "Fruits" },
+        { name: "Jack Fruit", price: 250, img: "/static/images/miniprojectimages/jack fruit.jpg", rating: 4.2, category: "Fruits" },
+        { name: "Watermelon", price: 100, img: "/static/images/miniprojectimages/watermelon.jpg", rating: 4.5, category: "Fruits" },
+        { name: "Fresh Strawberry", price: 180, img: "/static/images/miniprojectimages/straberry.jpg", rating: 4.7, category: "Fruits" },
+        
+        // Snacks & Biscuits (From candyimages & miniprojectimages)
+        { name: "Lays Classic Salted", price: 20, img: "/static/images/candyimages/lays.jpg", rating: 4.7, category: "Snacks" },
+        { name: "Kurkure Masala", price: 20, img: "/static/images/candyimages/kurkure.jpg", rating: 4.6, category: "Snacks" },
+        { name: "Parle-G Biscuits", price: 10, img: "/static/images/candyimages/parle-G.jpg", rating: 4.8, category: "Snacks" },
+        { name: "Cadbury 5 Star", price: 15, img: "/static/images/candyimages/cadbury-5-star-chocolate-.webp", rating: 4.6, category: "Snacks" },
+        { name: "Eclairs Candy", price: 50, img: "/static/images/candyimages/eclares.webp", rating: 4.5, category: "Snacks" },
+        { name: "Dairy Milk Silk", price: 160, img: "/static/images/candyimages/230g-block-of-cadbury-dairy-milk-chocolate-BGPRHG.jpg", rating: 4.9, category: "Snacks" },
+        { name: "Potato Chips", price: 30, img: "/static/images/miniprojectimages/potato chips.avif", rating: 4.4, category: "Snacks" },
+        { name: "Tomato Chips", price: 25, img: "/static/images/miniprojectimages/Tomato chip.jpg", rating: 4.3, category: "Snacks" },
+        { name: "Banana Chips", price: 40, img: "/static/images/miniprojectimages/banana chip.jpg", rating: 4.5, category: "Snacks" },
+        { name: "Bingo Chips", price: 20, img: "/static/images/miniprojectimages/bingo chip.jpg", rating: 4.2, category: "Snacks" },
+        
+        // Daily Need & Grains (From miniprojectimages & candyimages)
+        { name: "Amul Milk 1L", price: 66, img: "/static/images/miniprojectimages/amul milk.jpg", rating: 4.8, category: "Daily Need" },
+        { name: "Heritage Milk", price: 30, img: "/static/images/miniprojectimages/heritage milk.webp", rating: 4.6, category: "Daily Need" },
+        { name: "Cow Milk 1L", price: 70, img: "/static/images/miniprojectimages/cow milk.jpg", rating: 4.7, category: "Daily Need" },
+        { name: "Colgate Toothpaste", price: 95, img: "/static/images/candyimages/colgate.jpg", rating: 4.7, category: "Daily Need" },
+        { name: "Sugar 1kg", price: 45, img: "/static/images/miniprojectimages/sugar.jpg", rating: 4.5, category: "Groceries" },
+        { name: "Tata Salt", price: 25, img: "/static/images/miniprojectimages/tata salt.webp", rating: 4.8, category: "Groceries" },
+        { name: "Poha 500g", price: 40, img: "/static/images/miniprojectimages/poha.jpg", rating: 4.6, category: "Grains" },
+        { name: "India Gate Basmati", price: 180, img: "/static/images/candyimages/indian gate basmati.avif", rating: 4.9, category: "Grains" },
+        { name: "Toor Dal 1kg", price: 160, img: "/static/images/miniprojectimages/toor dal.webp", rating: 4.5, category: "Pulses" },
+        { name: "Chana Dal 1kg", price: 90, img: "/static/images/miniprojectimages/chana dal.webp", rating: 4.4, category: "Pulses" },
+        { name: "Wheat Flour 5kg", price: 260, img: "/static/images/miniprojectimages/wheat flour.jpg", rating: 4.7, category: "Grains" },
+        
+        // Spices & Oils (From candyimages & miniprojectimages)
+        { name: "Biryani Masala", price: 55, img: "/static/images/candyimages/biryani masala.jpg", rating: 4.8, category: "Spices & Masalas" },
+        { name: "Chicken Masala", price: 60, img: "/static/images/candyimages/chiken masala.jpg", rating: 4.7, category: "Spices & Masalas" },
+        { name: "Chilli Powder", price: 45, img: "/static/images/candyimages/chilli powder.avif", rating: 4.6, category: "Spices & Masalas" },
+        { name: "Sambar Masala", price: 50, img: "/static/images/candyimages/sambar masala.jpg", rating: 4.7, category: "Spices & Masalas" },
+        { name: "Coconut Oil", price: 120, img: "/static/images/miniprojectimages/coconut oil.jpg", rating: 4.6, category: "All Oils" },
+        { name: "Sunflower Oil", price: 150, img: "/static/images/miniprojectimages/oil sunflower.jpg", rating: 4.5, category: "All Oils" },
+
+        // --- NEW REQUESTED PRODUCTS ---
+        
+        // Drinks
+        { name: "Sprite 2L", price: 95, img: "https://images.unsplash.com/photo-1625772290748-390939a20011?q=80&w=400", rating: 4.5, category: "Drinks" },
+        { name: "Thums Up 2L", price: 95, img: "https://images.unsplash.com/photo-1554866585-cd94860890b7?q=80&w=400", rating: 4.6, category: "Drinks" },
+        { name: "Minute Maid Pulpy Orange", price: 40, img: "https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400", rating: 4.4, category: "Drinks" },
+        { name: "Badam Milk", price: 35, img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=400", rating: 4.7, category: "Drinks" },
+        { name: "Mango Juice", price: 110, img: "/static/images/miniprojectimages/mango.jpg", rating: 4.8, category: "Drinks" },
+        { name: "Frooti", price: 10, img: "https://images.unsplash.com/photo-1546173159-315724a93c90?q=80&w=400", rating: 4.3, category: "Drinks" },
+
+        // Chocolates
+        { name: "Ferrero Rocher", price: 450, img: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?q=80&w=400", rating: 4.9, category: "Snacks" },
+        { name: "Dairy Milk Silk", price: 80, img: "/static/images/candyimages/230g-block-of-cadbury-dairy-milk-chocolate-BGPRHG.jpg", rating: 4.8, category: "Snacks" },
+        { name: "Cadbury Celebrations", price: 200, img: "https://images.unsplash.com/photo-1581798459219-318e76aecc7b?q=80&w=400", rating: 4.7, category: "Snacks" },
+        { name: "Nestle Classic", price: 50, img: "https://images.unsplash.com/photo-1614088685112-0a760b71a3c8?q=80&w=400", rating: 4.5, category: "Snacks" },
+        { name: "Hershey's Kisses", price: 150, img: "https://images.unsplash.com/photo-1526081347589-7fa3cb41b4b2?q=80&w=400", rating: 4.6, category: "Snacks" },
+        { name: "Dark Chocolate 75%", price: 120, img: "https://images.unsplash.com/photo-1548907040-4bb42b10291f?q=80&w=400", rating: 4.8, category: "Snacks" },
+        { name: "Amul Dark Chocolate", price: 100, img: "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?q=80&w=400", rating: 4.7, category: "Snacks" },
+        { name: "Kinder Joy", price: 45, img: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?q=80&w=400", rating: 4.8, category: "Snacks" },
+        { name: "Toblerone", price: 180, img: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=400", rating: 4.9, category: "Snacks" },
+        { name: "Kit Kat", price: 25, img: "https://images.unsplash.com/photo-1592903297149-37fb25201d0d?q=80&w=400", rating: 4.7, category: "Snacks" },
+        { name: "Galaxy Milk", price: 60, img: "https://images.unsplash.com/photo-1614088685112-0a760b71a3c8?q=80&w=400", rating: 4.7, category: "Snacks" },
+        { name: "Perk", price: 10, img: "https://images.unsplash.com/photo-1592903297149-37fb25201d0d?q=80&w=400", rating: 4.4, category: "Snacks" },
+        { name: "Munch", price: 10, img: "https://images.unsplash.com/photo-1592903297149-37fb25201d0d?q=80&w=400", rating: 4.3, category: "Snacks" },
+        { name: "5 Star", price: 15, img: "/static/images/candyimages/cadbury-5-star-chocolate-.webp", rating: 4.5, category: "Snacks" },
+
+        // Hair Oils
+        { name: "Parachute Coconut Oil 500ml", price: 199, img: "/static/images/miniprojectimages/coconut oil.jpg", rating: 4.8, category: "Household items" },
+        { name: "Almond Hair Oil", price: 150, img: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=400", rating: 4.6, category: "Household items" },
+        { name: "Nihar Hair Oil", price: 120, img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=400", rating: 4.5, category: "Household items" },
+        { name: "Jasmine Hair Oil", price: 90, img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=400", rating: 4.4, category: "Household items" },
+        { name: "Dabur Amla Hair Oil", price: 110, img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=400", rating: 4.7, category: "Household items" }
+    ];
+
+    /* GENERATE PRODUCTS (Merging hardcoded and DB products) */
+
+    let products = [];
+
+    // 1. Add DB Products first (These are the real ones)
+    const dbItems = JSON.parse(document.getElementById('products-json').textContent);
+    dbItems.forEach(p => {
+        products.push({
+            _id: p._id,
+            name: p.name,
+            price: p.price,
+            img: p.image_url || "/static/images/products/groceries_1.png",
+            rating: p.rating || (4 + Math.random()).toFixed(1),
+            category: p.category,
+            stock: (p.stock > 0 || p.stock === undefined) ? "In Stock" : "Out of Stock",
+            isReal: true
+        });
+    });
+
+    // 2. Add Base Products (the "old" UI counterparts)
+    baseProducts.forEach(item => {
+        products.push({
+            name: item.name,
+            price: item.price,
+            img: item.img,
+            rating: item.rating,
+            category: item.category,
+            stock: "In Stock"
+        });
+    });
+
+    /* DISPLAY AND FILTER STRATEGY */
+
+    function displayProducts(productsToDisplay) {
+        let container = document.getElementById("products");
+        container.innerHTML = "";
+
+        if (productsToDisplay.length === 0) {
+            container.innerHTML = "<p style='grid-column: 1 / -1; text-align: center; font-size: 18px;'>No products found.</p>";
+            return;
+        }
+
+        productsToDisplay.forEach(p => {
+            let stars = "⭐".repeat(Math.round(p.rating));
+            let pStr = encodeURIComponent(JSON.stringify(p));
+
+            container.innerHTML += `
+                <div class="product" onclick="openModal('${pStr}')">
+                    <img src="${p.img}" alt="${p.name}">
+                    <h4>${p.name}</h4>
+                    <div class="category-tag" style="font-size: 13px; color: #555; margin-bottom: 8px; font-weight: bold;">${p.category}</div>
+                    <div class="rating">${stars}</div>
+                    <div class="price">₹${p.price}</div>
+                    <div class="stock">${p.stock}</div>
+                    <div class="actions" onclick="event.stopPropagation()">
+                        <button class="btn-cart" onclick="addToCartSync('${pStr}', false)">Add to Cart</button>
+                        <button class="btn-buy" onclick="addToCartSync('${pStr}', true)">Buy Now</button>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    /* ACTIONS */
+
+    function showToast(msg, isSuccess = false) {
+        let toast = document.getElementById("toastBox");
+        toast.innerText = msg;
+        toast.className = isSuccess ? "toast success" : "toast";
+        toast.style.display = "block";
+        setTimeout(() => { toast.style.display = "none"; }, 3000);
+    }
+
+    function addToCartSync(productDataStr, isBuyNow) {
+        const p = JSON.parse(decodeURIComponent(productDataStr));
+        
+        // Create a hidden form and submit it to sync with backend session
+        const form = document.createElement('form');
+        form.method = 'POST';
+        
+        // Decide endpoint based on whether it's a DB product or mock
+        if (p.isReal) {
+            form.action = `/cart/add/${p._id}`;
+        } else {
+            form.action = `/cart/add/mock_${p.name.replace(/\s+/g, '_')}`;
+        }
+        
+        const inputs = {
+            'qty': 1,
+            'buy_now': isBuyNow ? 'true' : 'false'
+        };
+
+        if (!p.isReal) {
+            inputs['name'] = p.name;
+            inputs['price'] = p.price;
+            inputs['image_url'] = p.img;
+        }
+
+        for (const [key, value] of Object.entries(inputs)) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = value;
+            form.appendChild(input);
+        }
+
+        document.body.appendChild(form);
+        showToast(isBuyNow ? "Redirecting to Checkout..." : `Added ${p.name} to Cart!`, true);
+        
+        setTimeout(() => form.submit(), 800);
+    }
+
+    /* MODAL LOGIC */
+
+    function closeModal(e) {
+        // Close only if click is directly on the dark overlay or close btn
+        if (e.target.id === 'productModal' || e.target.classList.contains('close-btn')) {
+            document.getElementById('productModal').style.display = 'none';
+        }
+    }
+
+    function openModal(productDataStr) {
+        document.getElementById('productModal').style.display = 'flex';
+
+        let p = JSON.parse(decodeURIComponent(productDataStr));
+        let pStr = productDataStr; // Already encoded from displayProducts
+        let stars = "⭐".repeat(Math.round(p.rating));
+
+        // Get relevant products (Same Category, excluding itself up to 4 items)
+        let relevant = products.filter(x => x.category === p.category && x.name !== p.name).slice(0, 4);
+        let relevantHtml = "";
+
+        if (relevant.length > 0) {
+            relevantHtml = `<div class="relevant-section">
+                    <h3>Similar Products in ${p.category}</h3>
+                    <div class="relevant-grid">
+                        ${relevant.map(rel => {
+                let relStr = encodeURIComponent(JSON.stringify(rel));
+                return `<div class="relevant-card" onclick="openModal('${relStr}')">
+                                <img src="${rel.img}">
+                                <div style="font-size:12px; margin-top:5px;"><b>₹${rel.price}</b></div>
+                            </div>`;
+            }).join('')}
+                    </div>
+                </div>`;
+        }
+
+        let html = `
+                <div class="modal-top">
+                    <img src="${p.img}" class="modal-img">
+                    <div class="modal-info">
+                        <h2>${p.name}</h2>
+                        <div class="modal-desc">
+                            <b>Category:</b> ${p.category} <br>
+                            <b>Status:</b> ${p.stock}<br><br>
+                            This is a premium high-quality ${p.name.toLowerCase()}. 
+                            Sourced directly from verified distributors to guarantee freshness and authentic value. 
+                            Perfect for your daily household needs in the ${p.category} section. 
+                            It features amazing reviews and is currently trending among buyers!
+                        </div>
+                        <div class="price">₹${p.price} <span style="font-size:14px; color:#888;">(Inclusive of all taxes)</span></div>
+                        <div class="rating" style="margin-bottom:20px; font-size:18px;">${stars} (${Math.floor(Math.random() * 200 + 15)} Reviews)</div>
+                        
+                        <div class="actions" style="max-width:300px;">
+                            <button class="btn-cart" onclick="addToCartSync('${pStr}', false)">Add to Cart</button>
+                            <button class="btn-buy" onclick="addToCartSync('${pStr}', true)">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reviews-box">
+                    <h3 style="margin-top:0;">Recent Customer Sentiments</h3>
+                    <div class="review-item">
+                        <div class="reviewer">Aman S. <span style="float:right; color:gold;">⭐⭐⭐⭐⭐</span></div>
+                        <div style="color:#555;font-size:14px;">"Absolutely amazing! Best quality I could find online. Will reorder."</div>
+                    </div>
+                    <div class="review-item">
+                        <div class="reviewer">Priya V. <span style="float:right; color:gold;">⭐⭐⭐⭐⭐</span></div>
+                        <div style="color:#555;font-size:14px;">"Delivered exactly as described. The packaging was pristine."</div>
+                    </div>
+                    <div class="review-item">
+                        <div class="reviewer">Rohit M. <span style="float:right; color:gold;">⭐⭐⭐⭐</span></div>
+                        <div style="color:#555;font-size:14px;">"Good product for this price bracket. Fast delivery via SmartCart."</div>
+                    </div>
+                </div>
+
+                ${relevantHtml}
+            `;
+
+        document.getElementById('modalContent').innerHTML = html;
+    }
+
+    function filterProducts() {
+        let searchQuery = document.getElementById("searchInput").value.toLowerCase();
+        let categoryFilter = document.getElementById("categoryFilter").value;
+        let sortOption = document.getElementById("sortOption").value;
+
+        // Filter
+        let filtered = products.filter(p => {
+            let matchesSearch = p.name.toLowerCase().includes(searchQuery) || p.category.toLowerCase().includes(searchQuery);
+            let matchesCategory = categoryFilter === "All" || p.category === categoryFilter;
+            return matchesSearch && matchesCategory;
+        });
+
+        // Sort
+        if (sortOption === "priceLow") {
+            filtered.sort((a, b) => a.price - b.price);
+        } else if (sortOption === "priceHigh") {
+            filtered.sort((a, b) => b.price - a.price);
+        } else if (sortOption === "rating") {
+            filtered.sort((a, b) => b.rating - a.rating);
+        } else if (sortOption === "name") {
+            filtered.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (sortOption === "category") {
+            filtered.sort((a, b) => a.category.localeCompare(b.category));
+        }
+
+        displayProducts(filtered);
+    }
+
+    // Initial rendering via URL Logic
+
+    function initPage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // 1. Check for search query
+        const searchQuery = urlParams.get('q');
+        if (searchQuery) {
+            document.getElementById('searchInput').value = searchQuery;
+        }
+
+        // 2. Check for category filter
+        const initialCategory = urlParams.get('category');
+
+        if (initialCategory) {
+            // Find matching option in the dropdown and set it
+            let select = document.getElementById('categoryFilter');
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].value === initialCategory) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        filterProducts(); // Initial Render & Filter
+    }
+
+    window.onload = initPage;
+
+</script>
+{% endblock %}

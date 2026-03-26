@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block title %}Scheduled Deliveries - Smart Cart{% endblock %}
+
+{% block head %}
+<style>
+    .header-section {
+        background: linear-gradient(135deg, var(--secondary-color) 0%, #d1f5ea 100%);
+        padding: 60px 20px;
+        text-align: center;
+        border-radius: var(--border-radius);
+        margin-bottom: 40px;
+    }
+
+    .header-section h1 {
+        font-size: 36px;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+    }
+
+    .header-section p {
+        font-size: 18px;
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .plans-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .plan-card {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--card-shadow);
+        overflow: hidden;
+        transition: var(--transition);
+        border: 2px solid transparent;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .plan-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--hover-shadow);
+        border-color: var(--primary-color);
+    }
+
+    .plan-header {
+        background: #f8fafc;
+        padding: 25px;
+        text-align: center;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .plan-icon {
+        font-size: 48px;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+    }
+
+    .plan-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+    }
+
+    .plan-price {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary-hover);
+    }
+
+    .plan-frequency {
+        font-size: 14px;
+        color: var(--text-light);
+        font-weight: 500;
+    }
+
+    .plan-body {
+        padding: 25px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .plan-features {
+        margin-bottom: 25px;
+        flex: 1;
+    }
+
+    .plan-features li {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-dark);
+    }
+
+    .plan-features i {
+        color: #22c55e;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="header-section">
+        <h1>Schedule Your Deliveries</h1>
+        <p>Set up automatic recurring deliveries for your daily essentials. Never run out of milk, fruits, or vegetables again!</p>
+    </div>
+
+    <div class="plans-grid">
+        <!-- Daily Milk -->
+        <div class="plan-card">
+            <div class="plan-header">
+                <i class="fa-solid fa-cow plan-icon"></i>
+                <h3 class="plan-title">Daily Milk</h3>
+                <div class="plan-price">₹399 <span class="plan-frequency">/ month</span></div>
+            </div>
+            <div class="plan-body">
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check"></i> Fresh cow/buffalo milk delivered daily morning</li>
+                    <li><i class="fa-solid fa-check"></i> Cancel anytime</li>
+                    <li><i class="fa-solid fa-check"></i> Pause during vacations</li>
+                    <li><i class="fa-solid fa-check"></i> Free doorstep delivery</li>
+                </ul>
+                <form action="{{ url_for('subscribe_delivery') }}" method="POST">
+                    <input type="hidden" name="plan_name" value="Daily Milk Delivery">
+                    <input type="hidden" name="frequency" value="Daily">
+                    <input type="hidden" name="price" value="399">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe Now</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Weekly Fruits -->
+        <div class="plan-card">
+            <div class="plan-header">
+                <i class="fa-solid fa-apple-whole plan-icon" style="color: #e11d48;"></i>
+                <h3 class="plan-title">Weekly Fresh Fruits</h3>
+                <div class="plan-price">₹599 <span class="plan-frequency">/ month</span></div>
+            </div>
+            <div class="plan-body">
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check"></i> 5kg mixed seasonal fruits delivered every weekend</li>
+                    <li><i class="fa-solid fa-check"></i> 100% farm fresh guarantee</li>
+                    <li><i class="fa-solid fa-check"></i> Exotic fruits occasionally included</li>
+                    <li><i class="fa-solid fa-check"></i> Customizable basket options</li>
+                </ul>
+                <form action="{{ url_for('subscribe_delivery') }}" method="POST">
+                    <input type="hidden" name="plan_name" value="Weekly Fruits Delivery">
+                    <input type="hidden" name="frequency" value="Weekly">
+                    <input type="hidden" name="price" value="599">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe Now</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Weekly Veggies -->
+        <div class="plan-card">
+            <div class="plan-header">
+                <i class="fa-solid fa-carrot plan-icon" style="color: #ea580c;"></i>
+                <h3 class="plan-title">Weekly Vegetables</h3>
+                <div class="plan-price">₹299 <span class="plan-frequency">/ month</span></div>
+            </div>
+            <div class="plan-body">
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check"></i> 8kg assorted fresh vegetables delivered twice a week</li>
+                    <li><i class="fa-solid fa-check"></i> Sourced directly from local farmers</li>
+                    <li><i class="fa-solid fa-check"></i> Hygienically cleaned and packed</li>
+                    <li><i class="fa-solid fa-check"></i> Priority delivery</li>
+                </ul>
+                <form action="{{ url_for('subscribe_delivery') }}" method="POST">
+                    <input type="hidden" name="plan_name" value="Weekly Vegetables Delivery">
+                    <input type="hidden" name="frequency" value="Twice a Week">
+                    <input type="hidden" name="price" value="299">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
