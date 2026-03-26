@@ -1065,6 +1065,9 @@ def admin_send_notification():
         flash('Title and message are required.', 'danger')
         
     return redirect(url_for('admin_dashboard') + '#tab-notifications')
+@app.route("/test")
+def test():
+    return {"message": "Backend API working"}
 
 # Application Runner
 if __name__ == '__main__':
@@ -1109,12 +1112,5 @@ if __name__ == '__main__':
             {'name': 'Kurkure Masala Munch', 'category': 'Snacks', 'price': 20.0, 'stock': 85, 'description': 'Spicy Indian snack.', 'image_url': 'https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&q=80&w=400', 'compare_price': 25.0, 'created_at': datetime.now()},
             {'name': 'Doritos Nacho Cheese', 'category': 'Snacks', 'price': 50.0, 'stock': 12, 'description': 'Cheesy crunch corn chips.', 'image_url': 'https://images.unsplash.com/photo-1629813580436-e0f39acbc901?auto=format&fit=crop&q=80&w=400', 'compare_price': 60.0, 'created_at': datetime.now()}
          ])
-        # ✅ OUTSIDE ALL BLOCKS
-@app.route("/test")
-def test():
-    return {"message": "Backend API working"}
 
-# ✅ ALWAYS LAST
-if __name__ == "__main__":
     app.run(debug=True, port=5000)
-    
