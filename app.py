@@ -1068,7 +1068,10 @@ def admin_send_notification():
 @app.route("/test")
 def test():
     return {"message": "Backend API working"}
-
+@app.route("/categories")
+def get_categories():
+    categories = list(categories_col.find({}, {'_id': 0}))
+    return {"categories": categories}
 # Application Runner
 if __name__ == '__main__':
     # Initialize some categories if empty
